@@ -1,9 +1,17 @@
-//
-//  DownloadsController.swift
-//  soar
-//
-//  Created by Ryan Stegman on 3/3/16.
-//  Copyright © 2016 Ryan Stegman. All rights reserved.
-//
+import UIKit
 
-import Foundation
+class DownloadsController: SoarView {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}

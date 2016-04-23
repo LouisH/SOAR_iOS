@@ -1,9 +1,23 @@
-//
-//  Pack.swift
-//  soar
-//
-//  Created by Ryan Stegman on 3/15/16.
-//  Copyright © 2016 Ryan Stegman. All rights reserved.
-//
+import UIKit
 
-import Foundation
+
+class Pack {
+    
+    var name: String
+    var major: String
+    var hobbies: String
+    var peeves: String
+    var aspirations: String
+    var id: String
+    var image: UIImage?
+    
+    init(name: String, major: String, hobbies: String, peeves: String, aspirations: String, image: UIImage?, id: String) {
+        self.name = name
+        self.major = major
+        self.hobbies = hobbies
+        self.peeves = peeves
+        self.aspirations = aspirations
+        self.image = image
+        self.id = id
+    }
+}

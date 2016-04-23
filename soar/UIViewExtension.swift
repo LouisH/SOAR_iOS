@@ -1,9 +1,12 @@
-//
-//  UIViewExtension.swift
-//  soar
-//
-//  Created by Ryan Stegman on 3/13/16.
-//  Copyright © 2016 Ryan Stegman. All rights reserved.
-//
+import UIKit
 
-import Foundation
+extension UIView {
+    class func loadNib<T: UIView>(viewType: T.Type) -> T {
+        let className = String.className(viewType)
+        return NSBundle(forClass: viewType).loadNibNamed(className, owner: nil, options: nil).first as! T
+    }
+    
+    class func loadNib() -> Self {
+        return loadNib(self)
+    }
+}

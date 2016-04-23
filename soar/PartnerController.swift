@@ -2,19 +2,17 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class PartnerController: UITableViewController {
-    var packImage: UIImage!
-    var packImageView: UIImageView!
-    var packName: UILabel!
-    var packMajor: UILabel!
-    var packHobbies: UILabel!
-    var packPeeves: UILabel!
-    var packAspirations: UILabel!
+class PartnerController: PartnerTableView {
+    var partnerImage: UIImage!
+    var partnerImageView: UIImageView!
+    var partnerName: UILabel!
+    static var partnersArray: Array<Partner> = []
+    static var currentPartner: String!
     var partners: Array<Partner>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.partners = PartnerController.partnersArray
     }
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -24,6 +22,7 @@ class PartnerController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -41,8 +40,11 @@ class PartnerController: UITableViewController {
         cell.configureForPartner(partners[indexPath.row])
         return cell
     }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        UIApplication.sharedApplication().openURL(NSURL(string: partners[indexPath.row].link)!)
+        PartnerController.currentPartner = partners[indexPath.row].id
+        api.getPartner(PartnerController.currentPartner)
+        
     }
     
 }

@@ -1,15 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderView" customModule="soar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NzC-dA-pbj">
+                    <rect key="frame" x="8" y="8" width="104" height="104"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NzC-dA-pbj" secondAttribute="height" multiplier="1:1" id="M4b-jo-Cu2"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nfP-aV-a3R">
+                    <rect key="frame" x="132" y="16" width="128" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8TQ-0N-nTB">
+                    <rect key="frame" x="132" y="51" width="128" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Exs-NS-Ldy">
+                    <rect key="frame" x="132" y="74" width="128" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peeves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CWg-QI-q78">
+                    <rect key="frame" x="132" y="97" width="128" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aspirations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RJQ-ZQ-9Ld">
+                    <rect key="frame" x="132" y="120" width="128" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7z-bF-zb1">
+                    <rect key="frame" x="8" y="120" width="104" height="24"/>
+                    <state key="normal" image="side_editprofile.png"/>
+                    <connections>
+                        <action selector="editProfile" destination="iN0-l3-epB" eventType="touchUpInside" id="DVt-AC-4CJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RJQ-ZQ-9Ld" secondAttribute="trailing" id="2Ye-Fj-CS9"/>
+                <constraint firstAttribute="trailing" secondItem="8TQ-0N-nTB" secondAttribute="trailing" id="4vW-Ud-s4T"/>
+                <constraint firstItem="CWg-QI-q78" firstAttribute="leading" secondItem="NzC-dA-pbj" secondAttribute="trailing" constant="20" id="9V4-bS-5rY"/>
+                <constraint firstItem="nfP-aV-a3R" firstAttribute="leading" secondItem="NzC-dA-pbj" secondAttribute="trailing" constant="20" id="Cai-Bk-xaC"/>
+                <constraint firstAttribute="bottom" secondItem="l7z-bF-zb1" secondAttribute="bottom" constant="16" id="JHm-aR-8db"/>
+                <constraint firstAttribute="trailing" secondItem="Exs-NS-Ldy" secondAttribute="trailing" id="JUa-Zb-omd"/>
+                <constraint firstItem="RJQ-ZQ-9Ld" firstAttribute="leading" secondItem="l7z-bF-zb1" secondAttribute="trailing" constant="20" id="MYN-5C-9cp"/>
+                <constraint firstItem="Exs-NS-Ldy" firstAttribute="leading" secondItem="NzC-dA-pbj" secondAttribute="trailing" constant="20" id="N8s-78-Lwf"/>
+                <constraint firstItem="8TQ-0N-nTB" firstAttribute="leading" secondItem="NzC-dA-pbj" secondAttribute="trailing" constant="20" id="Rgo-qd-1IR"/>
+                <constraint firstItem="nfP-aV-a3R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="V2B-pK-Gw3"/>
+                <constraint firstItem="l7z-bF-zb1" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2.5" id="VHV-D1-s54"/>
+                <constraint firstItem="NzC-dA-pbj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2.5" id="Vvp-RD-etW"/>
+                <constraint firstItem="l7z-bF-zb1" firstAttribute="top" secondItem="NzC-dA-pbj" secondAttribute="bottom" constant="8" id="Wqj-IV-VD8"/>
+                <constraint firstItem="NzC-dA-pbj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="bQq-8S-Qyr"/>
+                <constraint firstItem="l7z-bF-zb1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cyd-EC-uLz"/>
+                <constraint firstItem="Exs-NS-Ldy" firstAttribute="top" secondItem="8TQ-0N-nTB" secondAttribute="bottom" constant="2" id="ey4-le-n20"/>
+                <constraint firstItem="CWg-QI-q78" firstAttribute="top" secondItem="Exs-NS-Ldy" secondAttribute="bottom" constant="2" id="fvW-ER-Yjy"/>
+                <constraint firstAttribute="trailing" secondItem="nfP-aV-a3R" secondAttribute="trailing" id="gTg-4c-9tR"/>
+                <constraint firstItem="NzC-dA-pbj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="iGk-i0-L00"/>
+                <constraint firstItem="8TQ-0N-nTB" firstAttribute="top" secondItem="nfP-aV-a3R" secondAttribute="bottom" constant="14" id="jfz-M1-vym"/>
+                <constraint firstItem="RJQ-ZQ-9Ld" firstAttribute="top" secondItem="CWg-QI-q78" secondAttribute="bottom" constant="2" id="u5G-tq-0Pq"/>
+                <constraint firstAttribute="trailing" secondItem="CWg-QI-q78" secondAttribute="trailing" id="xQN-kF-oeO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="aspirationsText" destination="RJQ-ZQ-9Ld" id="22o-3F-0W8"/>
+                <outlet property="hobbiesText" destination="Exs-NS-Ldy" id="N1F-88-NYW"/>
+                <outlet property="majorText" destination="8TQ-0N-nTB" id="fJ2-D1-q5N"/>
+                <outlet property="nameText" destination="nfP-aV-a3R" id="lAV-bB-R0t"/>
+                <outlet property="peevesText" destination="CWg-QI-q78" id="tm4-tr-Nfx"/>
+                <outlet property="profileImage" destination="NzC-dA-pbj" id="M1W-I7-L9k"/>
+            </connections>
+            <point key="canvasLocation" x="396" y="139"/>
         </view>
     </objects>
+    <resources>
+        <image name="side_editprofile.png" width="241" height="40"/>
+    </resources>
 </document>

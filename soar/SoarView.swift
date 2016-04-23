@@ -9,7 +9,7 @@
 import UIKit
 
 class SoarView : UIViewController {
-    
+    let sb = UIStoryboard(name: "Main", bundle: nil)
     override func viewDidLoad() {
         
         // Sent from LeftMenu
@@ -23,10 +23,13 @@ class SoarView : UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "openFeedbackScreen", name: "openFeedback", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "openEditProfileScreen", name: "openEditProfile", object: nil)
         
         
     }
-    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -37,21 +40,45 @@ class SoarView : UIViewController {
     }
     
     func openHomeScreen(){
-        performSegueWithIdentifier("show_home", sender: self)
+        performSegue("show_home", sender: self)
+        NSNotificationCenter.defaultCenter().postNotificationName("closeMenuViaNotification", object: nil)
     }
     func openPartnersScreen(){
-        performSegueWithIdentifier("show_partners", sender: nil)
+        performSegue("show_partners", sender: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("closeMenuViaNotification", object: nil)
     }
     func openPackScreen(){
-        performSegueWithIdentifier("show_pack", sender: nil)
+        performSegue("show_pack", sender: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("closeMenuViaNotification", object: nil)
     }
     func openDownloadsScreen(){
-        performSegueWithIdentifier("show_downloads", sender:nil)
+        performSegue("show_downloads", sender:nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("closeMenuViaNotification", object: nil)
     }
     func openFeedbackScreen(){
-        performSegueWithIdentifier("show_feedback", sender:nil)
+        performSegue("show_feedback", sender:nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("closeMenuViaNotification", object: nil)
+    }
+    func openEditProfileScreen(){
+        performSegue("show_editprofile", sender:nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("closeMenuViaNotification", object: nil)
     }
     
     
     
+}
+
+extension UIViewController {
+    func canPerformSegue(id: String) -> Bool {
+        let segues = self.valueForKey("storyboardSegueTemplates") as? [NSObject]
+        let filtered = segues?.filter({ $0.valueForKey("identifier") as? String == id })
+        return (filtered?.count > 0) ?? false
+    }
+    func performSegue(id: String, sender: AnyObject?) -> Bool {
+        if canPerformSegue(id) {
+            self.performSegueWithIdentifier(id, sender: sender)
+            return true
+        }
+        return false
+    }
 }
