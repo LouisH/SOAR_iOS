@@ -46,5 +46,8 @@ class PartnerController: PartnerTableView {
         api.getPartner(PartnerController.currentPartner)
         
     }
+    @IBAction func bbutton(sender: UIButton) {
+        performSegueWithIdentifier("show_home", sender: self)
+    }
     
 }

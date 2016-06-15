@@ -10,6 +10,7 @@ class HeaderView : UIView {
     @IBOutlet var hobbiesText : UILabel!
     @IBOutlet var peevesText : UILabel!
     @IBOutlet var aspirationsText : UILabel!
+    @IBOutlet weak var editProfileAccessibility: UIButton!
     var profileString : String!
     var imageCache = AutoPurgingImageCache()
 
@@ -23,6 +24,7 @@ class HeaderView : UIView {
         setTextProperties()
         setImageProperties()
         self.profileImage.setNeedsDisplay()
+        self.accessibilityElements = [profileImage, editProfileAccessibility, nameText, majorText, hobbiesText, peevesText, aspirationsText]
     }
     
     func setTextProperties() {

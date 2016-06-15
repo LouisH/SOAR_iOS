@@ -50,5 +50,10 @@ class PackController: PackTableView {
         PackController.currentPack = pack[indexPath.row].id
         api.getUser(PackController.currentPack)
     }
+    
+    @IBAction func bbbuttun(sender: UIButton) {
+        performSegueWithIdentifier("show_home", sender: self)
+    }
+    
 
 }

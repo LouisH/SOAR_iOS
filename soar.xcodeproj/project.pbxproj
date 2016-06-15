@@ -67,6 +67,9 @@
 		9AC794EE1C95750300F28376 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC794ED1C95750300F28376 /* HeaderView.swift */; };
 		9AC794F01C957CB900F28376 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC794EF1C957CB900F28376 /* UIViewExtension.swift */; };
 		9AC794F31C957D7D00F28376 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC794F21C957D7D00F28376 /* StringExtension.swift */; };
+		9AD542B81D024CEF008D7C9D /* DownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD542B71D024CEF008D7C9D /* DownloadCell.swift */; };
+		9AD542BA1D025201008D7C9D /* DownloadTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD542B91D025201008D7C9D /* DownloadTableView.swift */; };
+		9AD542BC1D026615008D7C9D /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD542BB1D026615008D7C9D /* Download.swift */; };
 		9AE6CF5F1C781A47008D858E /* soar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AE6CF5E1C781A47008D858E /* soar_logo.png */; };
 		9AED21651C83219C000E0D1A /* Twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AED21631C83219C000E0D1A /* Twitter@2x.png */; };
 		9AED21661C83219C000E0D1A /* Twitter@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AED21641C83219C000E0D1A /* Twitter@3x.png */; };
@@ -170,7 +173,11 @@
 		9AC794ED1C95750300F28376 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		9AC794EF1C957CB900F28376 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9AC794F21C957D7D00F28376 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		9AD542B71D024CEF008D7C9D /* DownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadCell.swift; sourceTree = "<group>"; };
+		9AD542B91D025201008D7C9D /* DownloadTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTableView.swift; path = ../DownloadTableView.swift; sourceTree = "<group>"; };
+		9AD542BB1D026615008D7C9D /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		9AE6CF5E1C781A47008D858E /* soar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soar_logo.png; sourceTree = "<group>"; };
+		9AEC29901CE29ED0005055E5 /* AccessibilitySubviewsOrderedByTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessibilitySubviewsOrderedByTag.h; sourceTree = "<group>"; };
 		9AED21631C83219C000E0D1A /* Twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Twitter@2x.png"; sourceTree = "<group>"; };
 		9AED21641C83219C000E0D1A /* Twitter@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Twitter@3x.png"; sourceTree = "<group>"; };
 		9AF05D1F1C677005004AC2C8 /* soar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +277,8 @@
 				9A71C2B71C98101300422EF4 /* Pack.swift */,
 				9A71C2BB1C987AB000422EF4 /* Partner.swift */,
 				9A71C2BD1C987BB200422EF4 /* PartnerCell.swift */,
+				9AD542BB1D026615008D7C9D /* Download.swift */,
+				9AD542B71D024CEF008D7C9D /* DownloadCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 			children = (
 				9AF05D301C677005004AC2C8 /* LaunchScreen.storyboard */,
 				9AF05D2B1C677005004AC2C8 /* Main.storyboard */,
+				9AEC29901CE29ED0005055E5 /* AccessibilitySubviewsOrderedByTag.h */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 		9AC794F11C957D5600F28376 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9AD542B91D025201008D7C9D /* DownloadTableView.swift */,
 				9AC794E61C95344900F28376 /* PackTableView.swift */,
 				9A71C2C91C9A4C2C00422EF4 /* PartnerTableView.swift */,
 				9AC794EF1C957CB900F28376 /* UIViewExtension.swift */,
@@ -465,7 +476,7 @@
 				TargetAttributes = {
 					9AF05D1E1C677005004AC2C8 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 468VQ4J8SG;
+						DevelopmentTeam = JF4B5CN6C4;
 					};
 				};
 			};
@@ -604,6 +615,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC794E71C95344900F28376 /* PackTableView.swift in Sources */,
+				9AD542BA1D025201008D7C9D /* DownloadTableView.swift in Sources */,
 				9A74DDDC1C716F4B001AB892 /* LoginController.swift in Sources */,
 				9AF05D7D1C677638004AC2C8 /* PackController.swift in Sources */,
 				9A71C2CF1C9A792400422EF4 /* PartnerViewController.swift in Sources */,
@@ -611,6 +623,7 @@
 				9A71C2B81C98101300422EF4 /* Pack.swift in Sources */,
 				9AC794DF1C8851D800F28376 /* PartnerController.swift in Sources */,
 				9AC794DB1C8851A700F28376 /* FeedbackController.swift in Sources */,
+				9AD542B81D024CEF008D7C9D /* DownloadCell.swift in Sources */,
 				9AC794DD1C8851C000F28376 /* DownloadsController.swift in Sources */,
 				9A5F44181C828CF000CCDFAF /* API.swift in Sources */,
 				9AF05D791C67757A004AC2C8 /* SideMenuController.swift in Sources */,
@@ -625,6 +638,7 @@
 				9AC794D21C87822B00F28376 /* DrawerContainer.swift in Sources */,
 				9A71C2BE1C987BB200422EF4 /* PartnerCell.swift in Sources */,
 				9AC794F31C957D7D00F28376 /* StringExtension.swift in Sources */,
+				9AD542BC1D026615008D7C9D /* Download.swift in Sources */,
 				9AC794D91C884A8200F28376 /* SoarView.swift in Sources */,
 				9A74DDDF1C72689B001AB892 /* SessionController.swift in Sources */,
 				9A71C2BA1C982A4C00422EF4 /* ReplaceSegue.swift in Sources */,
@@ -709,7 +723,7 @@
 				INFOPLIST_FILE = soar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.csusb.soar;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.csusb-2.soar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;

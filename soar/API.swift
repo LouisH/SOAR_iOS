@@ -17,7 +17,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
         
         let params = ["username" : username]
         
-        Alamofire.request(.POST, "http://www.minlinks.com/api1/v1/login", parameters: params).responseJSON { response in
+        Alamofire.request(.POST, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/login", parameters: params).responseJSON { response in
             if((response.result.value!.valueForKey("message") as! String).containsString("Register")) {
                 APIClient.register = 1
             }
@@ -41,7 +41,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     func updateUser(name:String, major:String, hobbies:String, peeves:String, aspirations:String) -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
         let params = ["name" : name, "major" : major, "hobbies" : hobbies, "peeves": peeves, "aspirations":aspirations];
-        Alamofire.request(.POST, "http://www.minlinks.com/api1/v1/update", parameters: params, headers: headers).responseJSON {
+        Alamofire.request(.POST, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/update", parameters: params, headers: headers).responseJSON {
             response in
             let error : Bool = response.result.value?.valueForKey("error") as! Bool
             if(!error) {
@@ -63,14 +63,13 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     func getUsers() -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
         print("STARTED USERS")
-        Alamofire.request(.GET, "http://www.minlinks.com/api1/v1/users", headers: headers).responseJSON { response in
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/users", headers: headers).responseJSON { response in
             PackController.packArray = []
             if let jsonResult = response.result.value?.valueForKey("users") {
                 print("OK REALLY DID START")
                 for(var i=0;i<jsonResult.count;++i) {
                     let image_dir = jsonResult[i]["image_dir"] as! String
-                    let id = jsonResult[i]["id"] as! NSNumber
-                    let idString = id.stringValue
+                    let idString = jsonResult[i]["id"] as! String
                     let name = jsonResult[i]["name"] as! String
                     let major = jsonResult[i]["major"] as! String
                     let hobbies = jsonResult[i]["hobbies"] as! String
@@ -89,7 +88,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     func getUser(id:String) -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
         print("GET USER")
-        Alamofire.request(.GET, "http://www.minlinks.com/api1/v1/user/"+id, headers: headers).responseJSON { response in
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/user/"+id, headers: headers).responseJSON { response in
             print(response.result.value)
             if let jsonResult = response.result.value?.valueForKey("user") {
                     print(jsonResult)
@@ -138,7 +137,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
         let headers = ["Authorization": SessionController.getApiKey()]
         let params = ["image":encodedImage]
         //the jello
-        Alamofire.request(.POST, "http://www.minlinks.com/api1/v1/upload", parameters: params, headers: headers).responseJSON { response in
+        Alamofire.request(.POST, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/upload", parameters: params, headers: headers).responseJSON { response in
             print("Uploaded Image!")
             Alamofire.request(.GET, SessionController.getCoyoteImageDir()).responseImage { response in
                 if let responseImage = response.result.value {
@@ -151,7 +150,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func updateDir() -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
-        Alamofire.request(.POST, "http://www.minlinks.com/api1/v1/updateDir", headers: headers).responseJSON {
+        Alamofire.request(.POST, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/updateDir", headers: headers).responseJSON {
             response in
             let error : Bool = response.result.value?.valueForKey("error") as! Bool
             if(!error) {
@@ -165,11 +164,11 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func getOpt() -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
-        Alamofire.request(.GET, "http://www.minlinks.com/api1/v1/getopt", headers: headers).responseJSON {
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/getopt", headers: headers).responseJSON {
             response in
             let error : Bool = response.result.value?.valueForKey("error") as! Bool
             if(!error) {
-                let status = response.result.value?.valueForKey("opt") as! Int
+                let status = (response.result.value?.valueForKey("opt") as! NSString).integerValue
                 SessionController.updateOpt(status)
                 APIClient.optStatus = 1
             } else {
@@ -180,7 +179,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func setOpt() -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
-        Alamofire.request(.POST, "http://www.minlinks.com/api1/v1/setopt", headers: headers).responseJSON {
+        Alamofire.request(.POST, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/setopt", headers: headers).responseJSON {
             response in
             let error : Bool = response.result.value?.valueForKey("error") as! Bool
             if(!error) {
@@ -194,13 +193,12 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func getPartners() -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
-        Alamofire.request(.GET, "http://www.minlinks.com/api1/v1/partners", headers: headers).responseJSON { response in
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/partners", headers: headers).responseJSON { response in
             if let jsonResult = response.result.value?.valueForKey("partners") {
                 
                 for(var i=0;i<jsonResult.count;++i) {
                     let image_dir = jsonResult[i]["image_dir"] as! String
-                    let id = jsonResult[i]["id"] as! NSNumber
-                    let idString = id.stringValue
+                    let idString = jsonResult[i]["id"] as! String
                     let name = jsonResult[i]["name"] as! String
                     let description = jsonResult[i]["description"] as! String
                     let link = jsonResult[i]["link"] as! String
@@ -220,11 +218,11 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
             }
         }
     }
-    
+
     func getPartner(id:String) -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
         print("GET PARTNER")
-        Alamofire.request(.GET, "http://www.minlinks.com/api1/v1/partner/"+id, headers: headers).responseJSON { response in
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/partner/"+id, headers: headers).responseJSON { response in
             if let jsonResult = response.result.value?.valueForKey("partner") {
                 
                 let image_dir = jsonResult["image_dir"] as! String
@@ -241,7 +239,7 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func getPartnerLink(id:String) -> Void {
         let headers = ["Authorization": SessionController.getApiKey()]
-        Alamofire.request(.GET, "http://www.minlinks.com/api1/v1/partner/"+id+"/link", headers: headers).responseJSON { response in
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/partner/"+id+"/link", headers: headers).responseJSON { response in
             if let _ = response.result.value {
                 print("got link")
             }
@@ -269,6 +267,21 @@ class APIClient: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
             }
         }
 
+    }
+    //Downloads
+    func getDownloads() -> Void {
+        let headers = ["Authorization": SessionController.getApiKey()]
+        Alamofire.request(.GET, "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/api/soar/v1/index.php/downloads", headers: headers).responseJSON { response in
+            if let jsonResult = response.result.value?.valueForKey("downloads") {
+                
+                for(var i=0;i<jsonResult.count;++i) {
+                    let idString = jsonResult[i]["id"] as! String
+                    let name = jsonResult[i]["title"] as! String
+                    let file = jsonResult[i]["file"] as! String
+                    //let file = NSURL(fileURLWithPath: documentDirectoryPath.stringByAppendingString("http://107.170.239.96/api1/v1/index.php/downloads"))
+                }
+            }
+        }
     }
     
     

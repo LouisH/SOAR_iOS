@@ -49,11 +49,11 @@ class SessionController: NSObject, NSURLConnectionDelegate, UITextFieldDelegate,
     }
 
     func apiLoginURL() -> String {
-        return "http://www.minlinks.com/android_api/login.php"
+        return "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/android_api/login.php"
     }
 
     func apiUpdateURL() -> String {
-        return "http://www.minlinks.com/android_api/update.php"
+        return "http://ec2-54-200-96-167.us-west-2.compute.amazonaws.com/android_api/update.php"
     }
     
     static func updateOpt(status:Int) {

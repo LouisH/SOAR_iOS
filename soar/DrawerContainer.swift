@@ -41,11 +41,34 @@ class DrawerContainer : UIViewController {
     
     func closeMenu(animated:Bool){
         scrollView.setContentOffset(CGPoint(x: leftMenuWidth, y: 0), animated: animated)
+        if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+            scrollView.setContentOffset(CGPoint(x: 508, y: 0), animated: animated)
+        }
     }
     
+    /*override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.currentDevice().orientation.isLandscape {
+            self.closeMenu(true)
+        } else {
+            self.closeMenu(true)
+        }
+    }*/
+    
+    //closes side menu upon changing landscape orientation change
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+            self.closeMenu(true)
+        }
+     }
+ 
+    
     func openMenu(){
-        print("opening menu")
+        print("opening side menu")
+        if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+            UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.scrollView)
+        }
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.scrollView)
     }
     
     func openlogoutScreen(){
@@ -53,9 +76,8 @@ class DrawerContainer : UIViewController {
         closeMenu(true)
         performSegueWithIdentifier("do_logout", sender: nil)
     }
-    
-    
 }
+
 
 extension DrawerContainer : UIScrollViewDelegate {
     

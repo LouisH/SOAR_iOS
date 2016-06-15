@@ -2,7 +2,9 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class EditProfileController: SoarView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditProfileController: SoarView, UIImagePickerControllerDelegate,
+    UITextFieldDelegate,
+    UINavigationControllerDelegate {
     var newMedia: Bool!
     @IBOutlet var imageOut: UIImageView!
     @IBOutlet var nameInput: UITextField!
@@ -12,6 +14,7 @@ class EditProfileController: SoarView, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet var aspirationsInput: UITextField!
     @IBOutlet var optSwitch: UISwitch!
     
+    @IBOutlet var fakeScrollView: UIView!
     var currentImage : String!
     var resizedImage : UIImage!
     var didChangeImage : Bool!
@@ -121,4 +124,43 @@ class EditProfileController: SoarView, UIImagePickerControllerDelegate, UINaviga
         let userInfo = ["image": self.imageOut.image!]
         NSNotificationCenter.defaultCenter().postNotificationName("updateHeaderText", object: nil, userInfo: userInfo)
     }
+    
+    //Making keyboard nice
+    
+    //Tap to remove keyboard
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    //Move everything to see text when typing
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.animateTextField(textField, up: true)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.animateTextField(textField, up: false)
+    }
+    
+    func animateTextField(textField: UITextField, up: Bool) {
+        let movementDistance: Int = 185
+        // tweak as needed
+        let movementDuration: NSTimeInterval = 0.3
+        // tweak as needed
+        let movement: CGFloat = CGFloat((Int(up ? -movementDistance : movementDistance)))
+        UIView.beginAnimations("anim", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        UIView.commitAnimations()
+    }
+    
+    func dismissKeyboard() {
+        self.nameInput.resignFirstResponder()
+        self.majorInput.resignFirstResponder()
+        self.hobbiesInput.resignFirstResponder()
+        self.peevesInput.resignFirstResponder()
+        self.aspirationsInput.resignFirstResponder()
+    }
 }
+var epc = EditProfileController()

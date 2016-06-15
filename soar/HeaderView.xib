@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -15,6 +15,9 @@
             <subviews>
                 <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NzC-dA-pbj">
                     <rect key="frame" x="8" y="8" width="104" height="104"/>
+                    <accessibility key="accessibilityConfiguration" hint="profile picture" label="profile picture">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="NzC-dA-pbj" secondAttribute="height" multiplier="1:1" id="M4b-jo-Cu2"/>
                     </constraints>
@@ -51,6 +54,9 @@
                 </label>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7z-bF-zb1">
                     <rect key="frame" x="8" y="120" width="104" height="24"/>
+                    <accessibility key="accessibilityConfiguration" label="Edit profile">
+                        <accessibilityTraits key="traits" button="YES"/>
+                    </accessibility>
                     <state key="normal" image="side_editprofile.png"/>
                     <connections>
                         <action selector="editProfile" destination="iN0-l3-epB" eventType="touchUpInside" id="DVt-AC-4CJ"/>
@@ -58,6 +64,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <accessibility key="accessibilityConfiguration" label="side menu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="RJQ-ZQ-9Ld" secondAttribute="trailing" id="2Ye-Fj-CS9"/>
                 <constraint firstAttribute="trailing" secondItem="8TQ-0N-nTB" secondAttribute="trailing" id="4vW-Ud-s4T"/>
@@ -85,6 +92,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="aspirationsText" destination="RJQ-ZQ-9Ld" id="22o-3F-0W8"/>
+                <outlet property="editProfileAccessibility" destination="l7z-bF-zb1" id="6r7-Yf-5OR"/>
                 <outlet property="hobbiesText" destination="Exs-NS-Ldy" id="N1F-88-NYW"/>
                 <outlet property="majorText" destination="8TQ-0N-nTB" id="fJ2-D1-q5N"/>
                 <outlet property="nameText" destination="nfP-aV-a3R" id="lAV-bB-R0t"/>

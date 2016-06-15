@@ -1,8 +1,22 @@
 import UIKit
 
-class SoarMainController: SoarView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SoarMainController: SoarView, UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate {
     var newMedia: Bool! 
     var detailItem: Int = 0
+    
+    //for accessibility order purpose only//
+    @IBOutlet weak var sideMenu: UIButton!
+    @IBOutlet weak var CSUSBHome: UIButton!
+    @IBOutlet weak var camera: UIButton!
+    @IBOutlet weak var quickLinks: UILabel!
+    @IBOutlet weak var info: UIButton!
+    @IBOutlet weak var instagram: UIButton!
+    @IBOutlet weak var map: UIButton!
+    @IBOutlet weak var faq: UIButton!
+    @IBOutlet weak var twitter: UIButton!
+    @IBOutlet weak var emergency: UIButton!
+    //for accessibility order purpose only//
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,6 +26,12 @@ class SoarMainController: SoarView, UIImagePickerControllerDelegate, UINavigatio
         if(APIClient.register == 1) {
             NSNotificationCenter.defaultCenter().postNotificationName("openEditProfile", object: nil)
         }
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.sideMenu)
+        if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+            UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.sideMenu)
+            view.accessibilityElements = [sideMenu, CSUSBHome, camera, quickLinks, info, instagram, map, faq, twitter, emergency]
+        }
+        view.accessibilityElements = [sideMenu, CSUSBHome, camera, quickLinks, info, instagram, map, faq, twitter, emergency]
         //create UI
         self.configureView()
     }
@@ -26,8 +46,9 @@ class SoarMainController: SoarView, UIImagePickerControllerDelegate, UINavigatio
     }
 
     func configureView() {
-        
+
     }
+    
     
     @IBAction func sideBar(sender: AnyObject) {
         NSNotificationCenter.defaultCenter().postNotificationName("toggleMenu", object: nil)
@@ -103,9 +124,8 @@ class SoarMainController: SoarView, UIImagePickerControllerDelegate, UINavigatio
     }
     //Camera delegates End//
     //Image Resizer
+    
 
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // get the controller that storyboard has instantiated and set it's delegate
 //        cameraController = segue!.destinationViewController as! UIImagePickerController
