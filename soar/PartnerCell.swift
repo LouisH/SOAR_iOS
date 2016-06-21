@@ -10,6 +10,7 @@ class PartnerCell: UITableViewCell {
     
     func configureForPartner(partner: Partner) {
         partnerImageView.image = partner.image
+        partnerImageView.contentMode = .ScaleAspectFit  //no stretching images
         descriptionLabel.text = partner.name
     }
     

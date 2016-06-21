@@ -38,10 +38,9 @@ class FeedbackController: SoarView, UITextFieldDelegate {
     }
     
     @IBAction func sendButton(){
-        let url = NSURL(string: "mailto:003977661@coyote.csusb.edu" + "?subject=" + subjectInput + "&body=" + messageInput)
+        let url = NSURL(string: "mailto:orientation@csusb.edu" + "?subject=" + subjectInput + "&body=" + messageInput)
         UIApplication.sharedApplication().openURL(url!)
         UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, self.UIAccessibilityAnnouncementKeyStringValue)
-        print("hi")
     }
     
     //Making keyboard nice
